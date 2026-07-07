@@ -20,8 +20,7 @@ test_data
 __pycache__/
 *.pyc
 **/__pycache__/
-
-
-
-
+context/
+graphify-out/
+onrender-doc.md
 

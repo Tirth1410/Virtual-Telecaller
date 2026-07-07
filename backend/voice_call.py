@@ -61,7 +61,7 @@ TO_PHONE_NUMBER = os.getenv("TO_PHONE_NUMBER")
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 llm = ChatGroq(
-    groq_api_key=os.getenv("GROQ_API_KEY"), model_name="meta-llama/llama-4-maverick-17b-128e-instruct"
+    groq_api_key=os.getenv("GROQ_API_KEY"), model_name="llama-3.3-70b-versatile"
 )
 
 exit_words = [
@@ -314,7 +314,7 @@ def make_call():
 
     source_number = userdata.get("sourceNumber")
 
-    print(f"Host URL: {host}")
+    print(f"Host URL: {hosted_url_call}")
     print(f"Source Number: {source_number}")
 
     try:

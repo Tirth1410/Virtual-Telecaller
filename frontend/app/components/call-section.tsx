@@ -17,6 +17,8 @@ interface CallSectionProps {
     destinationNumber: string,
 }
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://virtual-telecaller.onrender.com';
+
 export function CallSection() {
 
 
@@ -56,8 +58,7 @@ export function CallSection() {
 
         try {
             
-            // const response = await fetch("http://127.0.0.1:5000/information", {
-            const response = await fetch("https://virtual-telecaller.onrender.com/information", {
+            const response = await fetch(`${BACKEND_URL}/information`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -90,8 +91,7 @@ export function CallSection() {
 
                 try {
 
-                    // const callResponse = await fetch("http://127.0.0.1:5000/make_call", {
-                    const callResponse = await fetch("https://virtual-telecaller.onrender.com/make_call", {
+                    const callResponse = await fetch(`${BACKEND_URL}/make_call`, {
                         method: "GET",
                     });
 

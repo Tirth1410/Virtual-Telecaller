@@ -8,8 +8,8 @@ import { io } from 'socket.io-client';
 
 
 
-// const socket = io('http://localhost:5000');
-const socket = io('https://virtual-telecaller.onrender.com');
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://virtual-telecaller.onrender.com';
+const socket = io(BACKEND_URL);
 
 const ChatPage = () => {
 

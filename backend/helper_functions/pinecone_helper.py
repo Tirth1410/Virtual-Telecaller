@@ -3,7 +3,7 @@ import uuid
 from dotenv import load_dotenv
 from pinecone import Pinecone
 from langchain_community.document_loaders import TextLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 import os
 load_dotenv()

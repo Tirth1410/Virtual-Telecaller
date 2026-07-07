@@ -17,7 +17,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain_community.tools import WikipediaQueryRun
 from langchain_community.document_loaders import TextLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from typing import Literal, TypedDict, List
 from langgraph.graph import END, START, StateGraph
@@ -86,7 +86,7 @@ def route(state: State):
     business_data = get_business_data()
 
     llm = ChatGroq(
-        groq_api_key=os.environ["GROQ_Key"], model_name="meta-llama/llama-4-maverick-17b-128e-instruct"
+        groq_api_key=os.environ["GROQ_Key"], model_name="llama-3.3-70b-versatile"
     )
 
     # Extract keywords from the business name and data
@@ -130,7 +130,7 @@ def route(state: State):
 
     # print("Route Prompt : ", route_prompt)
     llm = ChatGroq(
-        groq_api_key=os.environ["GROQ_Key"], model_name="meta-llama/llama-4-maverick-17b-128e-instruct"
+        groq_api_key=os.environ["GROQ_Key"], model_name="llama-3.3-70b-versatile"
     )
 
     llm = llm.with_structured_output(RouteQuery)
@@ -214,7 +214,7 @@ def history_retriver(state: State):
     query = state["messages"][-1].content
 
     llm = ChatGroq(
-        groq_api_key=os.environ["GROQ_Key"], model_name="meta-llama/llama-4-maverick-17b-128e-instruct"
+        groq_api_key=os.environ["GROQ_Key"], model_name="llama-3.3-70b-versatile"
     )
     history_data = ""
     # Add the latest message to the history
@@ -276,8 +276,7 @@ def history_retriver(state: State):
 
 llm = ChatGroq(
     groq_api_key=os.environ["GROQ_Key"],
-    # model_name = 'llama-3.3-70b-versatile'
-    model_name="meta-llama/llama-4-maverick-17b-128e-instruct",
+    model_name="llama-3.3-70b-versatile",
 )
 
 

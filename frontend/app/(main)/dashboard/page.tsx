@@ -29,8 +29,8 @@ type RecentCallProps = {
 }
 
 async function getData() {
-  // const res = await fetch("http://127.0.0.1:5000/call_details", {
-  const res = await fetch("https://virtual-telecaller.onrender.com/call_details", {
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://virtual-telecaller.onrender.com';
+  const res = await fetch(`${BACKEND_URL}/call_details`, {
 
     method: "GET",
     headers: {

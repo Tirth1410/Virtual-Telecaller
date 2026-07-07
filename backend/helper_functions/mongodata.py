@@ -9,8 +9,7 @@ load_dotenv()
 mongodb_uri = os.getenv("MONGODB_URI")
 
 def save_data_to_mongo(business_name, business_data, system_prompt, source_Number, destination_Number):
-
-
+    client = None
     try:
         client = MongoClient("mongodb://localhost:27017/")
         db = client["virtual_telecaller"]
@@ -30,11 +29,13 @@ def save_data_to_mongo(business_name, business_data, system_prompt, source_Numbe
     except Exception as e:
         print(f"Error saving data to MongoDB: {e}")
     finally:
-        client.close()
+        if client:
+            client.close()
 
 
 
 def save_call_conversation(call_sid,call_text):
+    client = None
     try:
         client = MongoClient(mongodb_uri)
         db = client["Virtual_tellecaller"]
@@ -50,7 +51,8 @@ def save_call_conversation(call_sid,call_text):
     except Exception as e:
         print(f"Error saving call conversation to MongoDB:{e}")
     finally:
-        client.close()
+        if client:
+            client.close()
 
 
 
